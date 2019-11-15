@@ -1,13 +1,13 @@
-## Implementation of a Bitcoin price checker
+## Implementation of an Air Quality data fetching library
 
 
-In this repository you can find a file named ```stock.py``` that implements the ```get_price(company)``` function. It queries the FMP on-line service to receive the stock value of a company in U.S. Dollars. This function is used in the ```main.py``` file to obtain the last price of Apple and Google. If you run the program, executing the main file with: ```python main.py``` it will  give you results similar to the following: 
+In this repository you can find a file named ```openairquality.py``` that implements the ```get_quality(city, parameter)``` function. It queries the [OpenAQ](https://openaq.org) website to fetch the value of some air quality parameter in a world city. This function is used in the ```main.py``` file to obtain the value of pm10 in Rome and the value of no2 in Bologna. The second attempt will fail, as the database does not contain such value. If you run the program, executing the main file with: ```python main.py``` it will  give you results similar to the following: 
 
 ```
-$ python main.py 
-Company 261.14 has a stock value of Apple Inc.
-Company 1297.13 has a stock value of Alphabet Inc.
+$ python main.py
+Rome has a pm10 value of 18.391304347826086
+Could not find a value of no2 for Bologna
 ```
 
-Note that the project requires the ```json``` and ```requests``` module to run. [FMP](https://financialmodelingprep.com/) is an on-line resource that provides stock data. The APIs are documented in a [API documentation page](https://financialmodelingprep.com/developer/docs/). 
+Note that the project requires the ```json``` and ```requests``` module to run. [OpenAQ](https://openaq.org/) is a project that receives air quality data from people and serves them on-line. The APIs are documented in a [API documentation page](https://docs.openaq.org/). 
 
