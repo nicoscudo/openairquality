@@ -11,3 +11,4 @@ Could not find a value of no2 for Bologna
 
 Note that the project requires the ```json``` and ```requests``` module to run. [OpenAQ](https://openaq.org/) is a project that receives air quality data from people and serves them on-line. The APIs are documented in a [API documentation page](https://docs.openaq.org/). 
 
+Test Collaborators-> Nicolò
