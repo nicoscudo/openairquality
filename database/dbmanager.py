@@ -42,5 +42,9 @@ Class DatabaseManager (object):
         else:
             return False
  
-   def close (self):
+    def close (self):
         self.conn.close()
+
+    def clean_up (self):
+        self.cursor.execute('''DROP TABLE user''')
+       
