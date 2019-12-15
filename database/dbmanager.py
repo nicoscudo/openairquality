@@ -2,7 +2,7 @@ import sqlite3
 import hashlib
 import random
 
-Class DatabaseManager (object):
+class DatabaseManager (object):
     def __init__(self):
         self.conn = sqlite3.connect('example-pwd.db')
         self.cursor = self.conn.cursor()
