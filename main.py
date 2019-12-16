@@ -1,22 +1,14 @@
-from openairquality import get_quality
+import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("username", help="Username to log-in (password required)")
-parser.add_argument("-p", "--password",
-                    help="Password to log-in required", required=True)
-parser.add_argument("-c", "--city",
-                    help="Name of the European city to be sought",
-                    required=True)
-parser.add_argument("-m", "--mol",
-                    help="Polluting molecule required (default=pm10)",
-                    choices=list_csv('pypackage/parameters.csv'),
-                    default="pm10")
-parser.add_argument("-v", "--verbosity", help="Increase output verbosity",
-                    action="count")
+database_option = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument("username", help="log-in, give Username")
+parser.add_argument("password", help="log-in, give Password")
+database_option.add_argument("-p",
+                    help="Check user", action="store_true")
+database_option.add_argument("-a", "--add", help="Add user", action="store_true")
+database_option.add_argument("-d", "--delete", help="Clean database", action="store_true")
+parser.add_argument("-v", "--verbosity", help="Increase output verbosity", action="store_true")
 args = parser.parse_args()
-
-
-
-
 
