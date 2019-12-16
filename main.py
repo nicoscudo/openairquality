@@ -1,9 +1,14 @@
-from openairquality import get_quality
+import argparse
 
-pm10=get_quality()
-print("Rome has a pm10 value of {}".format(pm10))
-no2=get_quality(city="Bologna", parameter='no2')
-if no2==-1:
-    print("Could not find a value of no2 for Bologna")
 
+parser = argparse.ArgumentParser()
+database_option = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument("username", help="log-in, give Username")
+parser.add_argument("password", help="log-in, give Password")
+database_option.add_argument("-p",
+                    help="Check user", action="store_true")
+database_option.add_argument("-a", "--add", help="Add user", action="store_true")
+database_option.add_argument("-d", "--delete", help="Clean database", action="store_true")
+parser.add_argument("-v", "--verbosity", help="Increase output verbosity", action="store_true")
+args = parser.parse_args()
 
