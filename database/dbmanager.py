@@ -11,7 +11,7 @@ class DatabaseManager (object):
         except sqlite3.OperationalError:
             # Create table
             self.cursor.execute('''CREATE TABLE user
-                          (id INTEGER AUTO_INCREMENT,
+                          (id INTEGER AUTOINCREMENT,
                            username TEXT NOT NULL,
                            password TEXT NOT NULL,
                            salt TEXT NOT NULL,
@@ -23,13 +23,13 @@ class DatabaseManager (object):
         for i in range(1000):
             digest = hashlib.sha256(digest.encode('utf-8')).hexdigest()
 
-        self.cursor.execute("INSERT OR REPLACE INTO user VALUES (?,?,?)",
+        self.cursor.execute("INSERT INTO user VALUES (NULL,?,?,?)",
                    (username, digest, salt))
         self.conn.commit()
 
     def check_for_username_correct(self, username, password):
-        salt = cursor.execute("SELECT salt FROM user WHERE username=?",(username))
-        digest = salt + password
+        salt = self.cursor.execute("SELECT salt FROM user WHERE username=?",(username,)).fetchall()[0][0]
+        digest = str(salt) + password
         for i in range(1000):
            digest = hashlib.sha256(digest.encode('utf-8')).hexdigest()
         rows = self.cursor.execute("SELECT * FROM user WHERE username=? and password=?",
