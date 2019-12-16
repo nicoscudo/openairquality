@@ -27,3 +27,4 @@ elif args.delete:
     sys.exit("Database cleaned")
 
 manager.close()
+

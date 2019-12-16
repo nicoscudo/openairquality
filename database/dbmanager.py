@@ -47,4 +47,4 @@ class DatabaseManager (object):
 
     def clean_up (self):
         self.cursor.execute('''DROP TABLE user''')
-       
+      
