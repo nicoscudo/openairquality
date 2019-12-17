@@ -29,11 +29,13 @@ class DatabaseManager(object):
         self.conn.commit()
 
     def check_for_username_correct(self, username, password):
-        salt = self.cursor.execute("SELECT salt FROM user WHERE username=?", (username,)).fetchall()[0][0]
+        salt = self.cursor.execute("SELECT salt FROM user WHERE username=?",
+                                   (username,)).fetchall()[0][0]
         digest = str(salt) + password
         for i in range(1000):
             digest = hashlib.sha256(digest.encode('utf-8')).hexdigest()
-        rows = self.cursor.execute("SELECT * FROM user WHERE username=? and password=?",
+        rows = self.cursor.execute("SELECT * FROM user WHERE username=?",
+                                   "and password=?",
                                    (username, digest))
         self.conn.commit()
         results = rows.fetchall()
