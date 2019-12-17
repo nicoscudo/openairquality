@@ -23,4 +23,4 @@ $ python3 main.py nic ad -a
 
 
 
-Note that the project requires the ```json``` and ```requests``` module to run. [OpenAQ](https://openaq.org/) is a project that receives air quality data from people and serves them on-line. The APIs are documented in a [API documentation page](https://docs.openaq.org/). 
+Note that the project requires the ```argparse```, ```os```, ```json```, ```requests``` and ```csv``` module to run. [OpenAQ](https://openaq.org/) is a project that receives air quality data from people and serves them on-line. The APIs are documented in a [API documentation page](https://docs.openaq.org/). 
