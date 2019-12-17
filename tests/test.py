@@ -15,4 +15,5 @@ class TestMain(unittest.TestCase):
 
     def delete_file(self):
         self.csv_util.delete_cache()
-        os.path.exists(self.csv_util.csv_file.name)
+        u = os.path.exists(self.csv_util.csv_file.name)
+        self.assertFalse(u)
