@@ -9,7 +9,7 @@ def get_quality(city="Roma", parameter='pm10'):
     URL = openaq_URL.format(city, parameter)
     r = requests.get(URL)
     data = json.loads(r.text)['results']
-    p_value=0
+    p_value = 0
     if data:
         for d in data:
             measure = d['measurements'][0]

@@ -7,14 +7,15 @@ class CsvUtil(object):
         self.csv_file = open('cache.csv', 'w+')
         self.csv_reader = csv.reader(self.csv_file, delimiter=',')
         self.csv_writer = csv.writer(self.csv_file, delimiter=',')
-        self.csv_writer.writerow(['City', 'BC', 'CO', 'NO2', 'O3', 'PM10', 'PM2.5', 'SO2'])
+        self.csv_writer.writerow(['City', 'BC', 'CO', 'NO2', 'O3',
+                                  'PM10', 'PM2.5', 'SO2'])
         self.parameters = ['bc', 'co', 'no2', 'o3', 'pm10', 'pm25', 'so2']
 
     def add_city(self, city):
-        l = []
+        city_city = []
 
         if city:
-            l.append(city[0]['city'])
+            city_city.append(city[0]['city'])
             for parameter in self.parameters:
                 p_value = 0
 
@@ -23,7 +24,7 @@ class CsvUtil(object):
                     for n in measurements:
                         if n['parameter'] == parameter:
                             p_value += n['value']
-                l.append(str(p_value / len(city)))
+                city_city.append(str(p_value / len(city)))
 
             self.csv_writer.writerow(l)
             self.csv_file.flush()

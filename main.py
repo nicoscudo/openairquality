@@ -10,9 +10,12 @@ parser.add_argument("username", help="log-in, give Username")
 parser.add_argument("password", help="log-in, give Password")
 database_option.add_argument("-p",
                              help="Check user", action="store_true")
-database_option.add_argument("-a", "--add", help="Add user", action="store_true")
-database_option.add_argument("-d", "--delete", help="Clean database", action="store_true")
-parser.add_argument("-v", "--verbosity", help="Increase output verbosity", action="store_true")
+database_option.add_argument("-a", "--add", help="Add user",
+                             action="store_true")
+database_option.add_argument("-d", "--delete", help="Clean database",
+                             action="store_true")
+parser.add_argument("-v", "--verbosity", help="Increase output verbosity",
+                    action="store_true")
 args = parser.parse_args()
 
 manager = DatabaseManager()
@@ -28,7 +31,8 @@ elif args.delete:
 
 manager.close()
 
-print("This is a program that takes from OpenAQ website the value of air quality in some city around the world")
+print("This is a program that takes from OpenAQ website the value of",
+      "air quality in some city around the world")
 print("Available parameter: bc, co, no2, o3, pm10, pm25, so2")
 
 requestor = OpenAirRequestor()
@@ -45,12 +49,14 @@ while True:
     air_quality = csv_util.get_data(city, parameter)
     if args.verbosity:
         if air_quality:
-            print("The parameter {} of the city {} is {}".format(parameter, city.capitalize(), air_quality))
+            print("The parameter {} of the city {}",
+                  "is {}".format(parameter, city.capitalize(), air_quality))
         else:
-            print("Sorry, we couldn't find any result for parameter {} in {}".format(parameter, city.capitalize()))
+            print("Sorry, we couldn't find any result for parameter {}",
+                  "in {}".format(parameter, city.capitalize()))
     else:
         print(air_quality)
-        
+
     exit = input("Exit? Y/N ")
     if exit.lower() == "y":
         csv_util.delete_cache()
