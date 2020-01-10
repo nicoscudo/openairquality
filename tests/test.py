@@ -13,7 +13,10 @@ class TestMain(unittest.TestCase):
         u = self.csv_util.get_data("asdfas", "safsdfa")
         self.assertFalse(u)
 
-    def delete_file(self):
+    def test_delete_file(self):
         self.csv_util.delete_cache()
         u = os.path.exists(self.csv_util.csv_file.name)
         self.assertFalse(u)
+
+    def tearDown(self):
+        self.csv_util.close()
