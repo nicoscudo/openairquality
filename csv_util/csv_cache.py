@@ -26,7 +26,7 @@ class CsvUtil(object):
                             p_value += n['value']
                 city_city.append(str(p_value / len(city)))
 
-            self.csv_writer.writerow(l)
+            self.csv_writer.writerow(city_city)
             self.csv_file.flush()
 
     def get_data(self, city, parameter):
