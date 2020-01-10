@@ -12,7 +12,7 @@ class DatabaseManager(object):
         except sqlite3.OperationalError:
             # Create table
             self.cursor.execute('''CREATE TABLE user
-                          (id INTEGER AUTOINCREMENT,
+                          (id INTEGER AUTO_INCREMENT,
                            username TEXT NOT NULL,
                            password TEXT NOT NULL,
                            salt TEXT NOT NULL,
