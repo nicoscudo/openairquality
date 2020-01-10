@@ -3,13 +3,25 @@ import hashlib
 import random
 
 
-class DatabaseManager(object):
+class DatabaseManager(object): 
+
+    '''
+    DatabaseManager class does the following:
+    - create a database 
+    - add a user 
+    - check if a user exists 
+    - delete the database 
+    '''
+
     def __init__(self):
         self.conn = sqlite3.connect('example-pwd.db')
         self.cursor = self.conn.cursor()
         try:
             self.cursor.execute("SELECT * FROM user")
+
+        # Table does not exist 
         except sqlite3.OperationalError:
+
             # Create table
             self.cursor.execute('''CREATE TABLE user
                           (id INTEGER AUTO_INCREMENT,
@@ -21,6 +33,8 @@ class DatabaseManager(object):
     def save_new_username_correct(self, username, password):
         salt = str(random.random())
         digest = salt + password
+        
+        # hashing password
         for i in range(1000):
             digest = hashlib.sha256(digest.encode('utf-8')).hexdigest()
 
@@ -32,6 +46,7 @@ class DatabaseManager(object):
         salt = self.cursor.execute("SELECT salt FROM user WHERE username=?",
                                    (username,)).fetchall()[0][0]
         digest = str(salt) + password
+        # hashing password
         for i in range(1000):
             digest = hashlib.sha256(digest.encode('utf-8')).hexdigest()
         rows = self.cursor.execute("SELECT * FROM user WHERE username=?",

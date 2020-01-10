@@ -5,6 +5,11 @@ import os
 
 class TestMain(unittest.TestCase):
 
+    '''
+    TestMain class does the following:
+    - test the functionalities of the main 
+    '''
+
     def setUp(self):
         self.csv_util = CsvUtil()
 

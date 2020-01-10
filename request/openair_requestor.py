@@ -3,6 +3,12 @@ import json
 
 
 class OpenAirRequestor(object):
+    
+    '''
+    OpenAirRequestor class does the following:
+    - send a request to the OpenAQ server for the given city
+    '''
+    
     def __init__(self):
         self.openair_url = 'https://api.openaq.org/v1/latest?city={}'
 
